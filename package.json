@@ -2,7 +2,7 @@
     "name": "react-native-simple-sound-player",
     "version": "0.2.0",
     "description": "A simple sound player module for React Native.",
-    "main": "src/index.js",
+    "main": "src/Player.js",
     "keywords": [
         "react-native",
         "sound-player",
@@ -13,19 +13,22 @@
     "files": [
         "android",
         "ios",
-        "index.js",
+        "src/Player.js",
         "SimpleSoundPlayer.podspec"
     ],
     "repository": {
         "type": "git",
         "url": "https://github.com/dankocher/react-native-simple-sound-player.git"
     },
-    "author": "Tu Nombre",
+    "author": "Daniel",
     "license": "MIT",
     "scripts": {
         "build": "echo 'This is a native module, no build script required for JavaScript'"
     },
     "dependencies": {
+        "async": "^2.6.3",
+        "eventemitter3": "^1.2.0",
+        "lodash": "^4.17.19"
     },
     "devDependencies": {
         "react": "18.0.0",

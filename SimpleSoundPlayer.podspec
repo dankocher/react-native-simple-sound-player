@@ -8,9 +8,10 @@ Pod::Spec.new do |s|
   s.summary         = "A simple sound player for React Native."
   s.license         = "MIT"
   s.author          = { "Daniel" => "droque123@gmail.com" } # Cambia por tu nombre y correo
-  s.ios.deployment_target = '10.0' # Cambia a la versión mínima que desees
+  s.ios.deployment_target = '14.0' # Cambia a la versión mínima que desees
   s.source          = { :git => "https://github.com/dankocher/react-native-simple-sound-player.git", :tag => "v#{s.version}" } # Cambia por tu repositorio
-  s.source_files    = 'ios/**/*.{h,m}' # Cambia según la estructura de tu proyecto
+  s.source_files    = 'ios/*.{h,m}'
+  s.preserve_paths  = "**/*.js"
   s.dependency 'React'
 
   # Si necesitas añadir otros frameworks

@@ -2,38 +2,45 @@
 
 import { NativeModules, NativeEventEmitter } from 'react-native';
 
+import async from 'async';
+import EventEmitter from 'eventemitter3';
 // Obtener el módulo nativo
-const { SimpleSoundPlayerTurboModule } = NativeModules;
+const RCTSoundPlayer = NativeModules.SimpleSoundPlayer;
+
+console.log(NativeModules)
 
 // Crear un event emitter para manejar los eventos
-const soundPlayerEvents = new NativeEventEmitter(SimpleSoundPlayerTurboModule);
+const soundPlayerEvents = new NativeEventEmitter(RCTSoundPlayer);
 
-// Definir la clase Player para la biblioteca
-class Player {
+
+class Player extends EventEmitter {
     constructor(soundName) {
+        super();
+
         this.soundName = soundName;
     }
 
     // Método para reproducir el sonido
     play() {
+        // RCTSoundPlayer.play(this.soundName);
         return new Promise((resolve, reject) => {
-            SimpleSoundPlayerTurboModule.play(this.soundName, resolve, reject);
+            RCTSoundPlayer.play(this.soundName, resolve, reject);
         });
     }
 
     // Método para detener la reproducción
     stop() {
-        SimpleSoundPlayerTurboModule.stop();
+        RCTSoundPlayer.stop();
     }
 
     // Método para ajustar el volumen
     setVolume(volume) {
-        SimpleSoundPlayerTurboModule.setVolume(volume);
+        RCTSoundPlayer.setVolume(volume);
     }
 
     // Método para destruir la instancia actual
     destroy() {
-        SimpleSoundPlayerTurboModule.destroy();
+        RCTSoundPlayer.destroy();
     }
 
     // Suscribirse a eventos de finalización de reproducción
@@ -48,4 +55,4 @@ class Player {
 }
 
 // Exportar la clase Player
-export { Player };
+export default Player;
